@@ -11,6 +11,8 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateBlob from './components/blob/CreateBlob'
+import IndexBlob from './components/blob/IndexBlob'
+import ShowBlob from './components/blob/ShowBlob'
 
 class App extends Component {
     constructor (props) {
@@ -61,9 +63,19 @@ class App extends Component {
                         path='/'
                         exact
                         render={() => (
-                            <CreateBlob msgAlert={this.msgAlert} user={user} />
+                            <>
+                                <CreateBlob msgAlert={this.msgAlert} user={user} />
+                                <IndexBlob msgAlert={this.msgAlert} user={user} />
+                            </>
                         )}
                     />}
+                    <Route
+                        path='/u/:id'
+                        exact
+                        render={() => (
+                            <ShowBlob msgAlert={this.msgAlert} user={user} />
+                        )}
+                    />
                     <Route
                         path='/sign-up'
                         render={() => (

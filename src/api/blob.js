@@ -13,28 +13,24 @@ export const createBlob = (user, data) => {
     })
 }
 
-// export const signIn = (credentials) => {
-//     return axios({
-//         url: apiUrl + '/sign-in/',
-//         method: 'POST',
-//         data: {
-//             credentials: {
-//                 email: credentials.email,
-//                 password: credentials.password
-//             }
-//         }
-//     })
-// }
+export const indexBlob = (user) => {
+    console.log(user)
+    return axios({
+        url: apiUrl + '/list-blobs/',
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        data: user
+    })
+}
 
-// export const signOut = (user) => {
-//     return axios({
-//         url: apiUrl + '/sign-out/',
-//         method: 'DELETE',
-//         headers: {
-//             Authorization: `Bearer ${user.token}`
-//         }
-//     })
-// }
+export const showBlob = (user, id) => {
+    return axios({
+        url: apiUrl + '/blobs/' + id,
+        method: 'GET'
+    })
+}
 
 // export const changePassword = (passwords, user) => {
 //     return axios({
