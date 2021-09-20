@@ -2,7 +2,6 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 export const createBlob = (user, data) => {
-    console.log(data.values())
     return axios({
         method: 'POST',
         url: apiUrl + '/blobs',
@@ -14,7 +13,6 @@ export const createBlob = (user, data) => {
 }
 
 export const indexBlob = (user) => {
-    console.log(user)
     return axios({
         url: apiUrl + '/list-blobs/',
         method: 'POST',
@@ -25,25 +23,30 @@ export const indexBlob = (user) => {
     })
 }
 
-export const showBlob = (user, id) => {
+export const showBlob = (id) => {
     return axios({
         url: apiUrl + '/blobs/' + id,
         method: 'GET'
     })
 }
 
-// export const changePassword = (passwords, user) => {
-//     return axios({
-//         url: apiUrl + '/change-password/',
-//         method: 'PATCH',
-//         headers: {
-//             Authorization: `Bearer ${user.token}`
-//         },
-//         data: {
-//             passwords: {
-//                 old: passwords.oldPassword,
-//                 new: passwords.newPassword
-//             }
-//         }
-//     })
-// }
+export const editBLob = (user, id, data) => {
+    return axios({
+        url: apiUrl + '/blobs/' + id,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        data: data
+    })
+}
+
+export const deleteBlob = (user, id) => {
+    return axios({
+        url: apiUrl + '/blobs/' + id,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        }
+    })
+}

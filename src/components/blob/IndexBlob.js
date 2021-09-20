@@ -1,35 +1,28 @@
-import React, { Component } from 'react'
-import { indexBlob } from '../../api/blob'
+import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
-export default class IndexBlob extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            uploads: []
-        }
-    }
+export default function IndexBlob ({ user, uploads, setUploads }) {
+    useEffect(() => {
+        console.log(uploads)
+    }, [uploads])
 
-    componentDidMount () {
-        indexBlob(this.props.user)
-            .then(res => this.setState({ uploads: res.data.blobs }))
-    }
+    // const uploadsJSX = () => {
+    //     if (!uploads) return
+    //     return uploads.map((upload, i) =>
+    //         <h3 key={i}>
+    //             <NavLink to={`/u/${upload._id}`} className='nav-link'>{upload.title}</NavLink>
+    //         </h3>)
+    // }
 
-    render () {
-        let uploadsJSX
-        if (this.state.uploads.length === 0) {
-            uploadsJSX = <h3>No Uploads Found.</h3>
-        } else {
-            uploadsJSX = this.state.uploads.map(upload => (
-                <div key={upload._id}>
-                    <h1>{upload.title}</h1>
-                </div>
-            ))
-        }
-        return (
-            <div>
-                <h1>Your Uploads</h1>
-                { uploadsJSX }
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h1>Your Uploads</h1>
+            { uploads && uploads.length !== 0
+                ? uploads.map((upload, i) =>
+                    <h3 key={i}>
+                        <NavLink to={`/u/${upload._id}`} className='nav-link'>{upload.title}</NavLink>
+                    </h3>)
+                : <h3>No Uploads Found.</h3>}
+        </div>
+    )
 }
