@@ -11,8 +11,8 @@ If it doesn't open your browser and go to the url `http://localhost:7165/`.
 
 ## `Urls`
 - [Back End GitHub Link](https://github.com/NIQ-Project/niq-backend "Archi.vin's Back-End Repository")
-- [Deployed Site](https://niq-project.github.io/niq/ "Monthly Website")
-- [Back-End](https://git.heroku.com/monthly-backend.git "Monthly's Back-End Website")
+- [Deployed Site](https://quiahn.github.io/archi.vin/  "Archi.vin Website")
+- [Back-End](https://archivin-backend.herokuapp.com/ "Archi.vin's Back-End Website")
 
 ## `Pitch`
 Archi.vin is a audio file sharing service where you can upload songs and share it with just a url.
