@@ -7,8 +7,7 @@ made by Quiahn Ballou
 ## `Setting Up Archi.vin`
 First fork and clone this repository. Once it is cloned go into the directory and run `npm install`, this command will install all packages used in this project.
 once the install is done run the command `npm start`, once this command runs the project should open in your browser.
-If it doesn't open your browser and go to the url `http://localhost:7165/`
-main
+If it doesn't open your browser and go to the url `http://localhost:7165/`.
 
 ## `Urls`
 - [Back End GitHub Link](https://github.com/NIQ-Project/niq-backend "Archi.vin's Back-End Repository")
