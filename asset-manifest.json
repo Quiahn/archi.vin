@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/archi.vin/static/css/main.46218c54.chunk.css",
+    "main.js": "/archi.vin/static/js/main.c6d83a4d.chunk.js",
+    "main.js.map": "/archi.vin/static/js/main.c6d83a4d.chunk.js.map",
+    "runtime-main.js": "/archi.vin/static/js/runtime-main.9bc2eed4.js",
+    "runtime-main.js.map": "/archi.vin/static/js/runtime-main.9bc2eed4.js.map",
+    "static/js/2.47772384.chunk.js": "/archi.vin/static/js/2.47772384.chunk.js",
+    "static/js/2.47772384.chunk.js.map": "/archi.vin/static/js/2.47772384.chunk.js.map",
+    "index.html": "/archi.vin/index.html",
+    "static/css/main.46218c54.chunk.css.map": "/archi.vin/static/css/main.46218c54.chunk.css.map",
+    "static/js/2.47772384.chunk.js.LICENSE.txt": "/archi.vin/static/js/2.47772384.chunk.js.LICENSE.txt",
+    "static/media/front.e3ec0cba.svg": "/archi.vin/static/media/front.e3ec0cba.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9bc2eed4.js",
+    "static/js/2.47772384.chunk.js",
+    "static/css/main.46218c54.chunk.css",
+    "static/js/main.c6d83a4d.chunk.js"
+  ]
+}
