@@ -40,10 +40,11 @@ function SignIn ({ setMsgAlerts, history, setUser }) {
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Sign In</h3>
                 <Form onSubmit={onSignIn}>
-                    <Form.Group controlId='email'>
+                    <Form.Group controlId='email' className="my-4">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
                             required
+                            className="mt-2"
                             type='email'
                             name='email'
                             value={email}
@@ -51,7 +52,7 @@ function SignIn ({ setMsgAlerts, history, setUser }) {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    <Form.Group controlId='password' className="my-4">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
@@ -62,7 +63,7 @@ function SignIn ({ setMsgAlerts, history, setUser }) {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>Submit</Button>
+                    <Button variant='dark' type='submit'>Submit</Button>
                 </Form>
             </div>
         </div>

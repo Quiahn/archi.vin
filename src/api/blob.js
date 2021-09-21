@@ -30,7 +30,7 @@ export const showBlob = (id) => {
     })
 }
 
-export const editBLob = (user, id, data) => {
+export const editBlob = (user, id, data) => {
     return axios({
         url: apiUrl + '/blobs/' + id,
         method: 'PATCH',

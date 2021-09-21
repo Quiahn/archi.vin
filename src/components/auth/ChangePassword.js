@@ -38,7 +38,7 @@ function ChangePassword ({ setMsgAlerts, user, history }) {
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Change Password</h3>
-                <Form onSubmit={onChangePassword}>
+                <Form onSubmit={onChangePassword} className="my-4">
                     <Form.Group controlId='oldPassword'>
                         <Form.Label>Old password</Form.Label>
                         <Form.Control
@@ -50,7 +50,7 @@ function ChangePassword ({ setMsgAlerts, user, history }) {
                             onChange={(e) => setOldPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='newPassword'>
+                    <Form.Group controlId='newPassword' className="my-4">
                         <Form.Label>New Password</Form.Label>
                         <Form.Control
                             required
@@ -61,7 +61,7 @@ function ChangePassword ({ setMsgAlerts, user, history }) {
                             onChange={(e) => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>Submit</Button>
+                    <Button variant='dark' type='submit'>Submit</Button>
                 </Form>
             </div>
         </div>

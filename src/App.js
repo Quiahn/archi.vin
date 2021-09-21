@@ -1,42 +1,57 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
-// import { v4 as uuid } from 'uuid'
-
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
-import SignUp from './components/auth/SignUp'
-import SignIn from './components/auth/SignIn'
-import SignOut from './components/auth/SignOut'
-import ChangePassword from './components/auth/ChangePassword'
-import CreateBlob from './components/blob/CreateBlob'
-import IndexBlob from './components/blob/IndexBlob'
-import ShowBlob from './components/blob/ShowBlob'
+import SignUp from './components/Auth/SignUp'
+import SignIn from './components/Auth/SignIn'
+import SignOut from './components/Auth/SignOut'
+import ChangePassword from './components/Auth/ChangePassword'
+import CreateBlob from './components/Blob/CreateBlob'
+import IndexBlob from './components/Blob/IndexBlob'
 import { indexBlob } from './api/blob'
+import Home from './components/Home/Home'
+import ShowBlob from './components/Blob/ShowBlob'
 
 export default function App (props) {
     const [user, setUser] = useState(null)
+    const [updateUploads, setUpdateUploads] = useState(false)
     const [msgAlerts, setMsgAlerts] = useState([])
-
     const [uploads, setUploads] = useState([])
 
     useEffect(() => {
-        if (!user) return
-        console.log(user)
+        if (!user && !updateUploads) return
         indexBlob(user)
-            .then(res => { setUploads(res.data.blobs); console.log(res) })
-            .catch(console.error)
-    }, [user])
+            .then(res => { setUploads(res.data.blobs) })
+            .then(() => setUpdateUploads(false))
+            .catch(() =>
+                setMsgAlerts(prev => [...prev, {
+                    heading: 'Failed getting files.',
+                    message: 'Severs could be down',
+                    variant: 'danger'
+                }])
+            )
+    }, [user, updateUploads])
 
     useEffect(() => {
-        console.log('App loaded')
     }, [])
 
     const deleteAlert = (id) => {
         setMsgAlerts((prevValue) => {
             return prevValue.filter((msg) => msg.id !== id)
         })
+    }
+
+    const homeJSX = () => {
+        if (user === null) {
+            return <Home msgAlert={msgAlerts} setUploads={setUploads} user={user} setMsgAlerts={setMsgAlerts} />
+        } else {
+            return (
+                <>
+                    <CreateBlob msgAlert={msgAlerts} setUploads={setUploads} user={user} setMsgAlerts={setMsgAlerts} />
+                    <IndexBlob setUpdateUploads={setUpdateUploads} msgAlert={msgAlerts} uploads={uploads} setUploads={setUploads} user={user} setMsgAlerts={setMsgAlerts} />
+                </>)
+        }
     }
 
     return (
@@ -52,24 +67,14 @@ export default function App (props) {
                     deleteAlert={deleteAlert}
                 />
             ))}
-
             <main className='container'>
-                {user != null && <Route
+                <Route
                     path='/'
                     exact
-                    render={() => (
-                        <>
-                            <CreateBlob msgAlert={msgAlerts} setUploads={setUploads} user={user} />
-                            <IndexBlob msgAlert={msgAlerts} uploads={uploads} setUploads={setUploads} user={user} />
-                        </>
-                    )}
-                />}
-                <Route
-                    path='/u/:id'
-                    exact
-                    render={() => (
-                        <ShowBlob msgAlert={msgAlerts} setMsgAlerts={setMsgAlerts} user={user} />
-                    )}
+                    render={() => {
+                        return homeJSX()
+                    }
+                    }
                 />
                 <Route
                     path='/sign-up'
@@ -81,6 +86,13 @@ export default function App (props) {
                     path='/sign-in'
                     render={() => (
                         <SignIn msgAlert={msgAlerts} setMsgAlerts={setMsgAlerts} setUser={setUser} />
+                    )}
+                />
+                <Route
+                    path='/u/:id'
+                    exact
+                    render={() => (
+                        <ShowBlob msgAlert={msgAlerts} setMsgAlerts={setMsgAlerts} user={user} />
                     )}
                 />
                 <AuthenticatedRoute

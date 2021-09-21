@@ -1,1 +1,65 @@
 @import '~bootstrap/scss/bootstrap';
+
+.vert-cent {
+    height: 100vh;
+}
+
+.pe-pointer {
+    cursor: pointer;
+}
+
+.bob-down {
+    -webkit-animation: mover 5s  alternate infinite;
+    animation: mover 5s alternate infinite;
+    
+  }
+// BOBBING ANIMATION
+  @-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(1rem); }
+  }
+
+  @keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(1rem); }
+  }
+
+// FADE ANIMATION
+  @keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
