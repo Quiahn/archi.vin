@@ -45,9 +45,6 @@ Users get started by creating an account then logging in. From there they can up
 ### Archive View:
 ![](https://i.imgur.com/vpU5vcx.png)
 
-## ERD:
-![](https://i.imgur.com/rkqQgOn.png)
-
 ## `Planning Time Table`
 
 ### Day 1:
